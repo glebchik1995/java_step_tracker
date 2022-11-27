@@ -24,25 +24,36 @@ public class Main {
                 System.out.println("Введите месяц за какой вы хотите ввести шаги: ");
 
                 for (int i = 0; i < months.length; i++) {
-                    System.out.println((i + 1) + " - " + months[i]);
+
+                System.out.println((i + 1) + " - " + months[i]);
                 }
                 int numberMonth = scanner.nextInt();
 
                 String month = months[numberMonth - 1];
-                if(numberMonth >= 1 && numberMonth <=12){
-                    System.out.println("Выбран: " + month);}
+
+                System.out.println("Выбран: " + month);
+
                 System.out.println("Выберете число от 1 до 30 за которое хотите ввести шаги");
+
                 int numberDay = scanner.nextInt();
+
                 System.out.println("Введите кол-во пройденных шагов за " + numberDay + "-й" + " день месяца " + month + ":");
+
                 int quantityStep = scanner.nextInt();
+
                 stepTracker.addSteps(month,numberDay,quantityStep);
 
-            } else if (userInput == 2) {
+                } else if (userInput == 2) {
+
                 System.out.println("Укажите за какой месяц вы хотите получить статистику: ");
+
                 for(int i = 0; i < months.length; i++) {
+
                     System.out.println((i + 1) + " - " + months[i]);
                 }
+
                 int monthNumber = scanner.nextInt();
+
                 String month = months[monthNumber - 1];
 
                 stepTracker.sumStepInMonth(month);

@@ -2,7 +2,6 @@
 import java.util.Scanner;
 public class StepTracker {
     Scanner scanner = new Scanner(System.in);
-
     Converter converter = new Converter();
     int[] days_in_a_month = new int[30];
 
@@ -12,8 +11,8 @@ public class StepTracker {
     }
 
     void addSteps(String month, int numberDay, int quantityStep) {
-        if (quantityStep >= 0) {
-            days_in_a_month[numberDay] = quantityStep;
+        if (quantityStep > 0) {
+            days_in_a_month[numberDay - 1] = quantityStep; //испраил ошибку
             System.out.println("Шаги записаны.");
             System.out.println("Кол-во пройденных шагов за " + numberDay + "-й " + "день" + " в месяце " + month + ": " + quantityStep);
         } else
@@ -40,26 +39,26 @@ public class StepTracker {
 
     void averageStep(String month) {
         int stepsPerMonth = 0;
-        int day = 30;
+
         for (int i = 0; i < days_in_a_month.length; i++) {
 
             stepsPerMonth += days_in_a_month[i];
         }
-        System.out.println("Среднее кол-во шагов за " + month + " составило - " + (stepsPerMonth / day));
+        System.out.println("Среднее кол-во шагов за " + month + " составило - " + (stepsPerMonth / days_in_a_month.length));//исправил ошибку
     }
 
     void bestSeries(int stepGoal, String month) {
-        int SeriesDay = 0;
+        int seriesDay = 0;//исправл ошибку
         int flag = 0;
         for (int i = 0; i < days_in_a_month.length; i++) {
             if (days_in_a_month[i] >= stepGoal) {
                 flag++;
-                if (flag > SeriesDay) {
-                    SeriesDay = flag;
+                if (flag > seriesDay) {
+                    seriesDay = flag;
                 }
             } else flag = 0;
         }
-        System.out.println("Лучшая серия: максимальное кол-во подряд идущих дней, в течение которых кол-во шагов за день было равно или выше целевого за " + month + " составило - " + SeriesDay);
+        System.out.println("Лучшая серия: максимальное кол-во подряд идущих дней, в течение которых кол-во шагов за день было равно или выше целевого за " + month + " составило - " + seriesDay);
     }
 
     void distance(String month) {
