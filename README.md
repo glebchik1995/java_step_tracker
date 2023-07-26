@@ -1,2 +1,2 @@
-# java-sprint1-hw
+# StepTracker
 First sprint homework
